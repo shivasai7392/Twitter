@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
+  <article class="content-section py-3 px-4 mb-4">
+    <h2 class="article-title">{{ title if title else "Invalid Request" }}</h2>
+    <p class="article-content">{{ error_message }}</p>
+    <div class="post-actions mt-3 pt-3 border-top">
+      <a class="btn btn-outline-secondary me-1" href="{{ url_for('home') }}">Go to Home</a>
+      <a class="btn btn-outline-light" href="{{ url_for('posts') }}">View Posts</a>
+    </div>
+  </article>
+{% endblock content %}

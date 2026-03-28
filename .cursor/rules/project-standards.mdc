@@ -1,0 +1,33 @@
+---
+description: Project-wide standards for FastAPI Twitter clone
+alwaysApply: true
+---
+
+# FastAPI Twitter Clone Standards
+
+## Stack and tooling
+- Use `uv` for all Python commands and dependencies.
+- Run server with `uv run fastapi dev main.py`.
+- Lint/format with `uv run ruff check .` and `uv run ruff format .`.
+- Do not suggest `pip` workflows unless explicitly requested.
+
+## Architecture expectations
+- Keep route logic in `main.py` unless asked to refactor.
+- Use server-side rendering with Jinja2 templates in `templates/`.
+- Keep posts as in-memory `list[dict]` unless user asks for persistence.
+
+## Python quality bar
+- Add type annotations for new/updated functions.
+- Add Google-style docstrings for new/updated functions.
+- Keep functions small and readable; avoid unnecessary abstractions for this learning project.
+
+## Template conventions
+- Extend `templates/layout.html` for pages.
+- Preserve Bootstrap structure and existing dark-mode behavior.
+- Keep template logic minimal; prefer preparing data in route handlers.
+
+## Safety and workflow
+- Do not revert unrelated local changes.
+- Make minimal, focused edits.
+- After substantial edits, check lint diagnostics and fix introduced issues.
+- check for ruff issues and fix those issues
