@@ -23,12 +23,15 @@ class User(Base):
     profile_picture: Mapped[str | None] = mapped_column(
         String(255), nullable=True, default=None
     )
-    posts: Mapped[list[Post]] = relationship("Post", back_populates="author")
+    posts: Mapped[list[Post]] = relationship(
+        "Post", back_populates="author", cascade="all, delete-orphan"
+    )
 
+    @property
     def image_path(self) -> str:
         """Return the path to the user's profile picture."""
         if self.profile_picture:
-            return f"/media/profile_pictures/{self.profile_picture}"
+            return f"/media/profile_pics/{self.profile_picture}"
         return "/static/profile_pics/default.jpg"
 
 

@@ -5,5 +5,10 @@
             "envManager": "ms-python.python:venv",
             "packageManager": "ms-python.python:pip"
         }
-    ]
+    ],
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+    "terminal.integrated.env.windows": {
+        "PYTHONHOME": "",
+        "PYTHONPATH": ""
+    }
 }

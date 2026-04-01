@@ -18,6 +18,15 @@ class UserCreate(UserBase):
     password: str = Field(..., min_length=8, max_length=100)
 
 
+class UserUpdate(BaseModel):
+    """Schema for updating a user."""
+
+    username: str | None = Field(None, min_length=1, max_length=50)
+    email: EmailStr = Field(None, max_length=100)
+    password: str | None = Field(None, min_length=8, max_length=100)
+    profile_picture: str | None = Field(None, max_length=255)
+
+
 class UserResponse(UserBase):
     """Schema for user API responses, includes id and created_at."""
 
@@ -25,6 +34,7 @@ class UserResponse(UserBase):
     id: int
     created_at: datetime
     updated_at: datetime | None = None
+    image_path: str | None = None
 
 
 class PostBase(BaseModel):
@@ -38,6 +48,13 @@ class PostCreate(PostBase):
     """Schema for creating a new post."""
 
     author_id: int  # TEMPORARY
+
+
+class PostUpdate(BaseModel):
+    """Schema for updating a post."""
+
+    title: str | None = Field(None, min_length=1, max_length=100)
+    content: str | None = Field(None, min_length=1)
 
 
 class PostResponse(PostBase):
